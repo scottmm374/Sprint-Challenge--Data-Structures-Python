@@ -17,6 +17,15 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    def __str__(self):
+        output = " "
+        current = self.head
+        while current is not None:
+            output += f'{current.value} ->'
+            current = current.next_node
+
+        return output
+
     def add_to_head(self, value):
         node = Node(value)
 
@@ -39,17 +48,26 @@ class LinkedList:
 
         return False
 
-    def reverse_list(self, node, prev):
+    def reverse_list(self, node, prev=None):
         if self.head is None:
             return None
-        prev = None
-        node = node
+        prev = prev
+        node = self.head
+        tracker = node.next_node
 
         while node:
             node.next_node = prev
             prev = node
-            node = node.next_node
+            node = tracker
 
-            if node:
-                node = node.next_node
+            if tracker is not None:
+                tracker = tracker.next_node
         self.head = prev
+
+
+test_list = LinkedList()
+test_list.add_to_head(1)
+test_list.add_to_head(2)
+test_list.add_to_head(3)
+test_list.add_to_head(4)
+test_list.reverse_list(None)
