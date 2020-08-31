@@ -63,11 +63,3 @@ class LinkedList:
             if tracker is not None:
                 tracker = tracker.next_node
         self.head = prev
-
-
-test_list = LinkedList()
-test_list.add_to_head(1)
-test_list.add_to_head(2)
-test_list.add_to_head(3)
-test_list.add_to_head(4)
-test_list.reverse_list(None)
